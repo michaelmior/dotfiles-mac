@@ -65,6 +65,8 @@ install_files () {
     source=`basename --suffix='.symlink' $full_source`
     dest=`eval echo $3`
 
+    [ `readlink -f $dest` = $full_source ] && continue
+
     if [ -f $dest ] || [ -d $dest ]
     then
 
