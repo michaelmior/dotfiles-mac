@@ -53,16 +53,17 @@ link_files () {
   success "linked $1 to $2"
 }
 
-install_dotfiles () {
-  info 'installing dotfiles'
+install_files () {
+  info "installing $1"
 
   overwrite_all=false
   backup_all=false
   skip_all=false
 
-  for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
+  for full_source in $2
   do
-    dest="$HOME/.`basename \"${source%.*}\"`"
+    source=`basename --suffix='.symlink' $full_source`
+    dest=`eval echo $3`
 
     if [ -f $dest ] || [ -d $dest ]
     then
@@ -73,7 +74,7 @@ install_dotfiles () {
 
       if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
       then
-        user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        user "File already exists: $source, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -108,20 +109,21 @@ install_dotfiles () {
 
       if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
       then
-        link_files $source $dest
+        link_files $full_source $dest
       else
-        success "skipped $source"
+        success "skipped $full_source"
       fi
 
     else
-      link_files $source $dest
+      link_files $full_source $dest
     fi
 
   done
 }
 
 setup_gitconfig
-install_dotfiles
+install_files 'dotfiles' "`find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`" "$HOME/.\$source"
+install_files 'binaries' "`find . -mindepth 3 -maxdepth 3 -path '*/bin/*'`" "$HOME/bin/\$source"
 
 echo ''
 echo '  All installed!'
