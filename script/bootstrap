@@ -65,7 +65,7 @@ install_files () {
     source=`basename --suffix='.symlink' $full_source`
     dest=`eval echo $3`
 
-    [ `readlink -f $dest` = $full_source ] && continue
+    [ -L $dest ] && [ `readlink $dest` = $full_source ] && continue
 
     if [ -f $dest ] || [ -d $dest ]
     then
@@ -125,7 +125,7 @@ install_files () {
 
 setup_gitconfig
 install_files 'dotfiles' "`find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`" "$HOME/.\$source"
-install_files 'binaries' "`find . -mindepth 3 -maxdepth 3 -path '*/bin/*'`" "$HOME/bin/\$source"
+install_files 'binaries' "`find $DOTFILES_ROOT -mindepth 3 -maxdepth 3 -path '*/bin/*'`" "$HOME/bin/\$source"
 
 echo ''
 echo '  All installed!'
