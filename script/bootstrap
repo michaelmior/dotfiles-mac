@@ -62,7 +62,8 @@ install_files () {
 
   for full_source in $2
   do
-    source=`basename --suffix='.symlink' $full_source`
+    echo $full_source
+    source=`basename $full_source '.symlink'`
     dest=`eval echo $3`
 
     [ -L $dest ] && [ `readlink $dest` = $full_source ] && continue
