@@ -1,0 +1,2 @@
+#!/bin/bash
+perl -MPOSIX -e 'print strerror($ARGV[0])."\n";' $1
