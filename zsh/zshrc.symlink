@@ -57,10 +57,10 @@ unalias ag
 
 setopt histignorespace
 
-export PERL_LOCAL_LIB_ROOT="/home/mmior/perl5";
-export PERL_MB_OPT="--install_base /home/mmior/perl5";
-export PERL_MM_OPT="INSTALL_BASE=/home/mmior/perl5";
-export PERL5LIB="/home/mmior/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:/home/mmior/perl5/lib/perl5";
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5";
+export PERL_MB_OPT="--install_base $HOME/perl5";
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
+export PERL5LIB="$HOME/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$HOME/perl5/lib/perl5";
 export GOROOT=~/apps/go
 export GOPATH=~/gocode
 export LESS=FSRX
@@ -71,4 +71,4 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # OPAM configuration
-[ -x /usr/bin/opam ] && . /home/mmior/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
+[ -x /usr/bin/opam ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
