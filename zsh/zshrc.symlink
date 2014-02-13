@@ -72,3 +72,13 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~
 
 # OPAM configuration
 [ -x /usr/bin/opam ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
+
+# Allow Ctrl-z to toggle between suspend and resume
+function Resume {
+  zle push-input
+  BUFFER="fg"
+  zle accept-line
+}
+zle -N Resume
+
+bindkey "^Z" Resume
