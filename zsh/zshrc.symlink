@@ -66,7 +66,7 @@ export GOPATH=~/gocode
 export LESS=FSRX
 
 # Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~/perl5/bin:$GOROOT/bin:$GOCODE/bin:~/bin
+export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~/perl5/bin:$GOROOT/bin:$GOCODE/bin
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 alias e="exec_scmb_expand_args $EDITOR"
