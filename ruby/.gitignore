@@ -1,0 +1,4 @@
+rvm.symlink/*
+!rvm.symlink/config
+rvm.symlink/config/*
+!rvm.symlink/config/alias
