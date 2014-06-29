@@ -7,3 +7,6 @@
 [submodule "git/scm_breeze.symlink"]
 	path = git/scm_breeze.symlink
 	url = https://github.com/ndbroadbent/scm_breeze.git
+[submodule "python/pyenv.symlink"]
+	path = python/pyenv.symlink
+	url = git://github.com/yyuu/pyenv.git
