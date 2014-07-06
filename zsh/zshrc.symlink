@@ -1,7 +1,6 @@
 # Ensure correct language is used
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export EDITOR=vim
 
 # Advertise 256-color support for gnome-terminal
 if [ "$COLORTERM" = "gnome-terminal" ]; then
