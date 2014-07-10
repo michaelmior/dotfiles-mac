@@ -73,7 +73,7 @@ export GOPATH=~/gocode
 export LESS=FSRX
 
 # Customize to your needs...
-export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~/perl5/bin:$GOROOT/bin:$GOCODE/bin
+export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~/perl5/bin:$GOROOT/bin:$GOPATH/bin
 
 # OPAM configuration
 [ -x /usr/bin/opam ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
