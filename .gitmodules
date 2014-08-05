@@ -10,3 +10,9 @@
 [submodule "python/pyenv.symlink"]
 	path = python/pyenv.symlink
 	url = git://github.com/yyuu/pyenv.git
+[submodule "zsh/zsh-completions"]
+	path = zsh/zsh-completions
+	url = git://github.com/zsh-users/zsh-completions.git
+[submodule "tmux/tmux.symlink/plugins/tpm"]
+	path = tmux/tmux.symlink/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
