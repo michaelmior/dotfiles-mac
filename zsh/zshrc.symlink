@@ -10,6 +10,13 @@ if [ "$TERM" = "screen" ]; then
     export TERM="screen-256color"
 fi
 
+# use .localrc for secret stuff
+# want in your public, versioned repo.
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
 ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
