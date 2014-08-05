@@ -107,3 +107,4 @@ source ~/.rvm/scripts/rvm
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 alias e="exec_scmb_expand_args $EDITOR"
+function wd { dpkg -S $(readlink -f `which -a git | grep -E '^/' | head -1`) }
