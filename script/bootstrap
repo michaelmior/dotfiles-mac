@@ -138,5 +138,11 @@ pyenv install -s 2.7.6
 pyenv install -s 3.4.0
 pyenv global 2.7.6
 
+GVM_NO_GIT_BAK=1
+GVM_NO_UPDATE_PROFILE=1
+SRC_REPO=$DOTFILES_ROOT/go/gvm $DOTFILES_ROOT/go/gvm/binscripts/gvm-installer
+gvm version > /dev/null 2>&1 || source /home/mmior/.gvm/scripts/gvm
+gvm install release
+
 echo ''
 echo '  All installed!'

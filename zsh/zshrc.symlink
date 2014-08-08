@@ -78,12 +78,10 @@ export PERL_LOCAL_LIB_ROOT="$HOME/perl5";
 export PERL_MB_OPT="--install_base $HOME/perl5";
 export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
 export PERL5LIB="$HOME/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:$HOME/perl5/lib/perl5";
-export GOROOT=~/apps/go
-export GOPATH=~/gocode
 export LESS=FSRX
 
 # Customize to your needs...
-export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~/perl5/bin:$GOROOT/bin:$GOPATH/bin
+export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH:~/perl5/bin
 
 # OPAM configuration
 [ -x /usr/bin/opam ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
@@ -108,3 +106,6 @@ source ~/.rvm/scripts/rvm
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 alias e="exec_scmb_expand_args $EDITOR"
 function wd { dpkg -S $(readlink -f `which -a git | grep -E '^/' | head -1`) }
+
+# Set up Go version management
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
