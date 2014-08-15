@@ -110,3 +110,6 @@ function wd { dpkg -S $(readlink -f `which -a git | grep -E '^/' | head -1`) }
 
 # added by travis gem
 [ -f /u1/mmior/.travis/travis.sh ] && source /u1/mmior/.travis/travis.sh
+
+# Add local manpath
+export MANPATH=~/.man:$MANPATH
