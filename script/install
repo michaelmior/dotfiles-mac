@@ -26,28 +26,6 @@ fail () {
   exit
 }
 
-setup_gitconfig () {
-  if ! [ -f git/gitconfig.symlink ]
-  then
-    info 'setup gitconfig'
-
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
-      git_credential='osxkeychain'
-    fi
-
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.symlink.example > git/gitconfig.symlink
-
-    success 'gitconfig'
-  fi
-}
-
 link_files () {
   ln -s $1 $2
   success "linked $1 to $2"
@@ -124,27 +102,13 @@ install_files () {
   done
 }
 
-setup_gitconfig
 install_files 'dotfiles' "`find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`" "$HOME/.\$source"
 install_files 'binaries' "`find $DOTFILES_ROOT -mindepth 2 -maxdepth 3 -path '*/bin/*'`" "$HOME/bin/\$source"
 
-if [ ! -d ~/.rvm ]; then
-    ./ruby/rvm-installer
-    source ~/.rvm/scripts/rvm
-    rvm install 1.9.3,2.1
-fi
-
-pyenv install -s 2.7.6
-pyenv install -s 3.4.0
-pyenv global 2.7.6
-
-if [ ! -d ~/.gvm ]; then
-    GVM_NO_GIT_BAK=1
-    GVM_NO_UPDATE_PROFILE=1
-    SRC_REPO=$DOTFILES_ROOT/go/gvm $DOTFILES_ROOT/go/gvm/binscripts/gvm-installer
-    gvm version > /dev/null 2>&1 || source /home/mmior/.gvm/scripts/gvm
-    gvm install release
-fi
+for install_file in `find $DOTFILES_ROOT -maxdepth 2 -name install.zsh`
+do
+    source "$install_file"
+done
 
 echo ''
 echo '  All installed!'
