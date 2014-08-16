@@ -28,13 +28,6 @@ set -g terminal-overrides "xterm*:XT:smcup@:rmcup@"
 # set scrollback history to 10000 (10k)
 set -g history-limit 10000
 
-# use UTF8
-set -g utf8
-set-window-option -g utf8 on
-
-# make tmux display things in 256 colors
-set -g default-terminal "screen-256color"
-
 # reload ~/.tmux.conf using PREFIX r
 bind r source-file ~/.tmux.conf
 
@@ -43,3 +36,6 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
+
+# Automatically use mouse for scrolling
+setw -g mode-mouse on
