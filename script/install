@@ -107,6 +107,7 @@ install_files 'binaries' "`find $DOTFILES_ROOT -mindepth 2 -maxdepth 3 -path '*/
 
 for install_file in `find $DOTFILES_ROOT -maxdepth 2 -name install.zsh`
 do
+    info "$install_file\n"
     source "$install_file"
 done
 
