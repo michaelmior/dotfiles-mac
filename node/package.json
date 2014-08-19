@@ -1,0 +1,15 @@
+{
+  "name": "dotfiles",
+  "version": "0.0.1",
+  "description": "npm scripts to install for me by default",
+  "repository": "https://github.com/michaelmior/dotfiles",
+  "dependencies": {
+    "bower": "*",
+    "coffee-script": "*",
+    "gulp": "*",
+    "grunt-cli": "*",
+    "json-diff": "*",
+    "less": "*",
+    "uglify-js": "*"
+  }
+}
