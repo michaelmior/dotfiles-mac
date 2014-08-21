@@ -31,8 +31,6 @@ COMPLETION_WAITING_DOTS="true"
 PROJECT_PATHS=(~/apps)
 plugins=(git django python redis-cli debian pip bundler pj pep8 nvm npm gem go sudo)
 
-compdef mosh=ssh
-
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # shortcut to this dotfiles path is $ZSH
@@ -70,6 +68,8 @@ do
 done
 
 unset config_files
+
+compdef mosh=ssh
 
 # XXX This needs to come after RVM
 alias e="exec_scmb_expand_args $EDITOR"
