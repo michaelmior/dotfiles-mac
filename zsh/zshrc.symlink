@@ -28,7 +28,10 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git django python redis-cli debian pip bundler)
+PROJECT_PATHS=(~/apps)
+plugins=(git django python redis-cli debian pip bundler pj pep8 nvm npm gem go sudo)
+
+compdef mosh=ssh
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
