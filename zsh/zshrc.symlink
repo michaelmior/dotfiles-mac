@@ -97,5 +97,8 @@ function Resume {
 zle -N Resume
 bindkey "^Z" Resume
 
+# Only kill to the beginning of the line
+bindkey "^U" backward-kill-line
+
 # Add local manpath
 export MANPATH=~/.man:$MANPATH
