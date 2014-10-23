@@ -22,3 +22,6 @@
 [submodule "node/nvm.symlink"]
 	path = node/nvm.symlink
 	url = https://github.com/creationix/nvm.git
+[submodule "zsh/fzf.symlink"]
+	path = zsh/fzf.symlink
+	url = https://github.com/junegunn/fzf.git

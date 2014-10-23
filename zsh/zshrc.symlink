@@ -102,3 +102,8 @@ bindkey "^U" backward-kill-line
 
 # Add local manpath
 export MANPATH=~/.man:$MANPATH
+
+# Add fzf
+zle     -N   fzf-file-widget
+bindkey '^P' fzf-file-widget
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
