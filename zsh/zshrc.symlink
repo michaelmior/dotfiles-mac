@@ -104,6 +104,7 @@ bindkey "^U" backward-kill-line
 export MANPATH=~/.man:$MANPATH
 
 # Add fzf
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zle     -N   fzf-file-widget
 bindkey '^P' fzf-file-widget
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
