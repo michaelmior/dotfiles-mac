@@ -43,6 +43,15 @@ fi
 zle     -N   fzf-file-widget
 bindkey '^P' fzf-file-widget
 
+fzf-edit() {
+  fzf-file-widget
+  zle beginning-of-line
+  LBUFFER="vim "
+  zle accept-line
+}
+zle     -N   fzf-edit
+bindkey '^T' fzf-edit
+
 # ALT-C - cd into the selected directory
 fzf-cd-widget() {
   cd "${$(set -o nonomatch; command find -L * -path '*/\.*' -prune \
