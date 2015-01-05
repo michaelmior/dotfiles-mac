@@ -45,6 +45,7 @@ bindkey '^P' fzf-file-widget
 
 fzf-edit() {
   fzf-file-widget
+  [[ -z $BUFFER ]] && return
   zle beginning-of-line
   LBUFFER="vim "
   zle accept-line
