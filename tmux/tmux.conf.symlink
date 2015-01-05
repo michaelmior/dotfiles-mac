@@ -37,3 +37,10 @@ bind l select-pane -R
 
 # Automatically use mouse for scrolling
 setw -g mode-mouse on
+
+# Allow scrolling with shift-pageup/down
+bind -n S-Pageup copy-mode -u
+bind -n S-Pagedown copy-mode -u
+
+bind -n C-M-Pageup previous-window
+bind -n C-M-Pagedown next-window
