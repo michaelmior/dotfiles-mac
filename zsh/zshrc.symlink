@@ -48,7 +48,7 @@ fi
 # all of our zsh files
 typeset -U config_files
 setopt extendedglob
-config_files=($ZSH/^zsh/**/*.zsh)
+config_files=($ZSH/^zsh/*.zsh)
 
 # OPAM configuration
 [ -x /usr/bin/opam ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
