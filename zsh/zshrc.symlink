@@ -29,8 +29,9 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 PROJECT_PATHS=(~/apps)
-plugins=(git django python redis-cli debian pip bundler pj pep8 nvm npm gem go sudo heroku docker vagrant)
+plugins=(git django python redis-cli debian pip bundler pj pep8 nvm npm gem go sudo heroku docker vagrant zsh-syntax-highlighting)
 
+ZSH_CUSTOM=$HOME/.dotfiles/zsh/custom
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # shortcut to this dotfiles path is $ZSH
