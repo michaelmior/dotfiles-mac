@@ -75,6 +75,9 @@ done
 
 unset config_files
 
+# Allow a host-identifying symbol in localrc
+export PROMPT="$HOST_SYMBOL${HOST_SYMBOL:+ }$PROMPT"
+
 compdef mosh=ssh
 
 # XXX This needs to come after RVM
