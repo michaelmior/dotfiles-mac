@@ -1,3 +1,6 @@
+# Use tmuxline from vim
+run-shell "vim +quit &> /dev/null"
+
 # List of plugins
 # Supports `github_username/repo` or full git URLs
 set -g @tpm_plugins "              \
