@@ -134,3 +134,16 @@ vman() {
     fi
 }
 compdef vman="man"
+
+# Add command to quickly start or reattach to a tmux session by name
+tm() {
+    tmux attach-session -t $1 || tmux new-session -s $1
+}
+
+_tm() {
+  local word completions
+  word="$1"
+  completions=`tmux list-sessions | cut -d ':' -f1`
+  reply=( "${(ps:\n:)completions}" )
+}
+compctl -K _tm tm
