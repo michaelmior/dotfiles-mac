@@ -32,7 +32,12 @@ if [ -n "$TMUX_PANE" -a ${FZF_TMUX:-1} -ne 0 -a ${LINES:-40} -gt 15 ]; then
     else
       height="-l $height"
     fi
-    tmux split-window $height "zsh -c 'source ~/.fzf.zsh; tmux send-keys -t $TMUX_PANE \"\$(__fsel)\"'"
+    if [[ $1 == "1" ]]; then
+      tmux split-window $height "zsh -c 'source ~/.fzf.zsh; tmux send-keys -t $TMUX_PANE \"vim \$(__fsel)
+\"'"
+    else
+      tmux split-window $height "zsh -c 'source ~/.fzf.zsh; tmux send-keys -t $TMUX_PANE \"\$(__fsel)\"'"
+    fi
   }
 else
   fzf-file-widget() {
@@ -44,7 +49,7 @@ zle     -N   fzf-file-widget
 bindkey '^P' fzf-file-widget
 
 fzf-edit() {
-  fzf-file-widget
+  fzf-file-widget 1
   [[ -z $BUFFER ]] && return
   zle beginning-of-line
   LBUFFER="vim "
