@@ -137,7 +137,8 @@ compdef vman="man"
 
 # Add command to quickly start or reattach to a tmux session by name
 tm() {
-    tmux attach-session -t $1 || tmux new-session -s $1
+    tmux detach -s $1 2> /dev/null
+    tmux attach-session -t $1 2> /dev/null || tmux new-session -s $1
 }
 
 _tm() {
