@@ -47,3 +47,8 @@ bind -n S-Pagedown copy-mode -u
 
 bind -n C-M-Pageup previous-window
 bind -n C-M-Pagedown next-window
+
+# Better window numbering
+set -g base-index 1
+set -g pane-base-index 1
+set-option -g renumber-windows on
