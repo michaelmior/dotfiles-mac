@@ -148,3 +148,17 @@ _tm() {
   reply=( "${(ps:\n:)completions}" )
 }
 compctl -K _tm tm
+
+# cd into the directory of a Python package
+pcd() {
+  dir=`python -c "import os; print(os.path.dirname(__import__('$1').__file__))"`
+  [ $? -eq 0 ] && cd "$dir"
+}
+
+_pcd() {
+    local word completions
+    word="$1"
+    completions=`python -c "import pkgutil; print('\n'.join([x[1] for x in pkgutil.iter_modules() if x[1].startswith('$1')]))"`
+    reply=( "${(ps:\n:)completions}" )
+}
+compctl -K _pcd pcd
