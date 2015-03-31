@@ -163,3 +163,9 @@ _pcd() {
     reply=( "${(ps:\n:)completions}" )
 }
 compctl -K _pcd pcd
+
+# Set window title under tmux
+precmd() {
+    if [ -z "$TMUX" ]; then return; fi
+    echo -ne "\033]0;[$(tmux display-message -p "#S")] $(print -P "%~")\007"
+}
