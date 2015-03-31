@@ -76,6 +76,7 @@ done
 unset config_files
 
 # Allow a host-identifying symbol in localrc
+: ${HOST_SYMBOL:="%{$fg[cyan]%}λ%{$reset_color%}"}
 export PROMPT="$HOST_SYMBOL${HOST_SYMBOL:+ }$PROMPT"
 
 compdef mosh=ssh
