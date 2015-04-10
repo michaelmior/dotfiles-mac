@@ -12,39 +12,15 @@ fi
 
 export EDITOR=vim
 
-# use .localrc for secret stuff
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
-ZSH=$HOME/.oh-my-zsh
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
-
-COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-PROJECT_PATHS=(~/apps)
-plugins=(git django python redis-cli debian pip bundler pj pep8 nvm npm gem go sudo heroku docker vagrant grunt nmap zsh-syntax-highlighting)
-
-ZSH_CUSTOM=$HOME/.dotfiles/zsh/custom
-source $HOME/.oh-my-zsh/oh-my-zsh.sh
-
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 export PATH=~/bin:$PATH
 
-# use .localrc for SUPER SECRET CRAP that you don't
+# use .localrc for secret stuff
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
 then
-  source ~/.localrc
+    source ~/.localrc
 fi
 
 # all of our zsh files
@@ -74,6 +50,10 @@ do
 done
 
 unset config_files
+
+COMPLETION_WAITING_DOTS="true"
+PROJECT_PATHS=(~/apps)
+source "$HOME/.dotfiles/zsh/zgen/zgen.zsh"
 
 # Allow a host-identifying symbol in localrc
 : ${HOST_SYMBOL:="%{$fg[cyan]%}λ%{$reset_color%}"}
