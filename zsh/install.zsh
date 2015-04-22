@@ -29,5 +29,6 @@ zgen oh-my-zsh themes/muse
 zgen load zsh-users/zsh-syntax-highlighting
 zgen load zsh-users/zsh-completions src
 zgen load sharat87/pip-app
+zgen load micha/resty
 
 zgen save
