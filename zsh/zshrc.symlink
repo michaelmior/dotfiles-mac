@@ -51,6 +51,7 @@ done
 
 unset config_files
 
+DISABLE_UPDATE_PROMPT="true"
 COMPLETION_WAITING_DOTS="true"
 PROJECT_PATHS=(~/apps)
 source "$HOME/.dotfiles/zsh/zgen/zgen.zsh"
