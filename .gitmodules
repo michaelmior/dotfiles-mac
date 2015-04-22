@@ -25,3 +25,6 @@
 [submodule "apps/hr"]
 	path = apps/hr
 	url = https://github.com/LuRsT/hr.git
+[submodule "git/git-hooks"]
+	path = git/git-hooks
+	url = git://github.com/icefox/git-hooks.git
