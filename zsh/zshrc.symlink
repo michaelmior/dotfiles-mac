@@ -97,13 +97,6 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 zle     -N   fzf-file-widget
 bindkey '^P' fzf-file-widget
 
-# Faster JRuby with drip
-if type drip > /dev/null; then
-  export JAVACMD=`which drip`
-  export DRIP_INIT_CLASS=org.jruby.main.DripMain
-  export DRIP_INIT="" # Needs to be non-null for drip to use it at all!
-fi
-
 # settings from: https://github.com/jruby/jruby/wiki/Improving-startup-time
 export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify"
 
