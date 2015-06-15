@@ -60,6 +60,7 @@ source "$HOME/.dotfiles/zsh/zgen/zgen.zsh"
 export PROMPT="$HOST_SYMBOL${HOST_SYMBOL:+ }$PROMPT"
 
 compdef mosh=ssh
+compdef _pids reptyr
 
 # XXX This needs to come after RVM
 alias e="exec_scmb_expand_args $EDITOR"
