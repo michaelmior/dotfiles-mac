@@ -79,7 +79,7 @@ export LESS=FSRX
 # Allow Ctrl-z to toggle between suspend and resume
 function Resume {
   zle push-input
-  BUFFER="fg"
+  BUFFER=" fg"
   zle accept-line
 }
 zle -N Resume
