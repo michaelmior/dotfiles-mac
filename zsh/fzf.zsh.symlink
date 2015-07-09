@@ -2,13 +2,13 @@
 # ------------------
 unalias fzf 2> /dev/null
 fzf() {
-  /usr/bin/ruby --disable-gems /home/mmior/.dotfiles/zsh/fzf.symlink/fzf "$@"
+  /usr/bin/ruby --disable-gems $HOME/.dotfiles/zsh/fzf.symlink/fzf "$@"
 }
 export -f fzf > /dev/null
 
 # Auto-completion
 # ---------------
-[[ $- =~ i ]] && source /home/mmior/.dotfiles/zsh/fzf.symlink/fzf-completion.zsh
+[[ $- =~ i ]] && source $HOME/.dotfiles/zsh/fzf.symlink/fzf-completion.zsh
 
 # Key bindings
 # ------------
