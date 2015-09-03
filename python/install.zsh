@@ -11,3 +11,4 @@ pyenv rehash
 
 pipsi --bin-dir=$HOME/bin install cqlsh
 pipsi --bin-dir=$HOME/bin install csvkit
+pipsi --bin-dir=$HOME/bin install pygmentize
