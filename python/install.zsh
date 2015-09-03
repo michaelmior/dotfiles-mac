@@ -1,9 +1,9 @@
 source python/path.zsh
 eval "$(pyenv init -)"
 
-pyenv install -s 2.7.9
+pyenv install -s 2.7.10
 pyenv install -s 3.4.3
-pyenv global 2.7.9
+pyenv global 2.7.10
 
 pip install virtualenv
 pip install pipsi
