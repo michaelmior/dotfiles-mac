@@ -9,6 +9,7 @@ run-shell "vim +quit &> /dev/null"
 set -g @tpm_plugins "              \
   tmux-plugins/tpm                 \
   tmux-plugins/tmux-sensible       \
+  tmux-plugins/tmux-copycat        \
 "
 
 # Initializes TMUX plugin manager
