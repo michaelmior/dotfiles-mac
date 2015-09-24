@@ -1,4 +1,5 @@
 set-option -g update-environment 'DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY DBUS_SESSION_BUS_ADDRESS'
+set-option -g default-shell /bin/zsh
 
 # Use tmuxline from vim
 run-shell "vim +quit &> /dev/null"
