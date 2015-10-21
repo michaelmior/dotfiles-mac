@@ -2,7 +2,7 @@ set-option -g update-environment 'DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PI
 set-option -g default-shell /bin/zsh
 
 # Use tmuxline from vim
-run-shell "vim +quit &> /dev/null"
+source ~/.tmuxline.conf
 
 # List of plugins
 # Supports `github_username/repo` or full git URLs
