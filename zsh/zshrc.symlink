@@ -15,13 +15,6 @@ export EDITOR=vim
 export ZSH=$HOME/.dotfiles
 export PATH=~/bin:$PATH
 
-# use .localrc for secret stuff
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-    source ~/.localrc
-fi
-
 # all of our zsh files
 typeset -U config_files
 setopt extendedglob
@@ -148,3 +141,10 @@ precmd() {
     if [ -z "$TMUX" ]; then return; fi
     echo -ne "\033]0;[$(tmux display-message -p "#S")] $(print -P "%~")\007"
 }
+
+# use .localrc for secret stuff
+# want in your public, versioned repo.
+if [[ -a ~/.localrc ]]
+then
+    source ~/.localrc
+fi
