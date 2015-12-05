@@ -4,6 +4,7 @@ MAINTAINER Michael Mior <michael.mior@gmail.com>
 RUN locale-gen en_US.UTF-8
 RUN apt-get update && \
     apt-get install -y \
+      autoconf \
       build-essential \
       bison \
       flex \
@@ -11,11 +12,19 @@ RUN apt-get update && \
       ed \
       git \
       libbz2-dev \
+      libc6-dev \
+      libncurses-dev \
       libreadline-dev \
       libssl-dev \
       libsqlite3-dev \
+      libtool \
+      libyaml-dev \
+      libxml2 \
+      ncurses-dev \
+      openssl \
       tmux \
       vim-nox \
+      zlib1g-dev \
       zsh \
     && apt-get clean
 
