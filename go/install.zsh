@@ -4,4 +4,6 @@ if [ ! -d ~/.gvm ]; then
     SRC_REPO=$DOTFILES_ROOT/go/gvm $DOTFILES_ROOT/go/gvm/binscripts/gvm-installer
     gvm version > /dev/null 2>&1 || source $HOME/.gvm/scripts/gvm
     gvm install go1.4.3 --prefer-binary
+    gvm use go1.4.3
+    gvm install go1.5.2 --prefer-binary
 fi
