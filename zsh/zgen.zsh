@@ -13,9 +13,7 @@ zgen oh-my-zsh plugins/gem
 zgen oh-my-zsh plugins/go
 zgen oh-my-zsh plugins/grunt
 zgen oh-my-zsh plugins/heroku
-zgen oh-my-zsh plugins/nvm
 zgen oh-my-zsh plugins/nmap
-zgen oh-my-zsh plugins/npm
 zgen oh-my-zsh plugins/pep8
 zgen oh-my-zsh plugins/pip
 zgen oh-my-zsh plugins/pj
