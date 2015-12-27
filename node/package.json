@@ -4,9 +4,12 @@
   "description": "npm scripts to install for me by default",
   "repository": "https://github.com/michaelmior/dotfiles",
   "dependencies": {
+    "babel-eslint": "*",
     "bower": "*",
     "coffee-script": "*",
     "diff-so-fancy": "*",
+    "eslint": "*",
+    "eslint-plugin-react": "*",
     "gulp": "*",
     "grunt-cli": "*",
     "json-diff": "*",
