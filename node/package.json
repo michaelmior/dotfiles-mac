@@ -6,6 +6,7 @@
   "dependencies": {
     "bower": "*",
     "coffee-script": "*",
+    "diff-so-fancy": "*",
     "gulp": "*",
     "grunt-cli": "*",
     "json-diff": "*",
