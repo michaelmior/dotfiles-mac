@@ -8,6 +8,7 @@ RUN apt-get update && \
       build-essential \
       bison \
       flex \
+      cabal-install \
       curl \
       ed \
       git \
