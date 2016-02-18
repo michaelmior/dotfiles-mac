@@ -96,7 +96,7 @@ export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverif
 
 # vim-superman
 vman() {
-    vim -c "SuperMan $*"
+    \vim -c "SuperMan $*"
 
     if [ "$?" != "0" ]; then
         echo "No manual entry for $*"
