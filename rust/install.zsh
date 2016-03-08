@@ -7,3 +7,4 @@ if [ ! -d ~/.rsvm/$STABLE_VERSION ]; then
 fi
 
 cargo install cargo-edit
+cargo install xsv
