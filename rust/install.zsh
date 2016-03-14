@@ -6,5 +6,5 @@ if [ ! -d ~/.rsvm/versions/$STABLE_VERSION ]; then
     rsvm use $STABLE_VERSION
 fi
 
-cargo install cargo-edit
-cargo install xsv
+[[ -e ~/.cargo/bin/cargo-add ]] || cargo install cargo-edit
+[[ -e ~/.cargo/bin/xsv ]] || cargo install xsv

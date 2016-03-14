@@ -15,45 +15,18 @@ export EDITOR=vim
 export ZSH=$HOME/.dotfiles
 export PATH=~/bin:$PATH
 
-# all of our zsh files
-typeset -U config_files
-setopt extendedglob
-config_files=($ZSH/^zsh/*.zsh)
-
 # OPAM configuration
 [ -x /usr/bin/opam ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
-
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
-
-# load everything but the path and completion files
-for file in ${${${config_files:#*/path.zsh}:#*/completion.zsh}:#*/install.zsh}
-do
-  source $file
-done
-
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
-done
-
-unset config_files
 
 DISABLE_UPDATE_PROMPT="true"
 COMPLETION_WAITING_DOTS="true"
 PROJECT_PATHS=(~/apps)
 source "$HOME/.dotfiles/zsh/zgen/zgen.zsh"
+source "$HOME/.dotfiles/init.zsh"
 
 # Allow a host-identifying symbol in localrc
 : ${HOST_SYMBOL:="%{$fg[cyan]%}λ%{$reset_color%}"}
 export PROMPT="$HOST_SYMBOL${HOST_SYMBOL:+ }$PROMPT"
-
-compdef mosh=ssh
-compdef _pids reptyr
 
 # XXX This needs to come after RVM
 alias e="exec_scmb_expand_args $EDITOR"
@@ -62,8 +35,6 @@ alias e="exec_scmb_expand_args $EDITOR"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 function wd { dpkg -S $(readlink -f `which -a $1 | grep -E '^/' | head -1`) }
-unalias ag
-compdef _ag ag
 unalias d
 
 setopt histignorespace
@@ -92,9 +63,6 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 zle     -N   fzf-file-widget
 bindkey '^P' fzf-file-widget
 
-# settings from: https://github.com/jruby/jruby/wiki/Improving-startup-time
-export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify"
-
 # vim-superman
 vman() {
     \vim -c "SuperMan $*"
@@ -103,7 +71,6 @@ vman() {
         echo "No manual entry for $*"
     fi
 }
-compdef vman="man"
 
 # Add command to quickly start or reattach to a tmux session by name
 tm() {

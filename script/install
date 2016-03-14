@@ -102,6 +102,12 @@ install_files () {
   done
 }
 
+concat_config () {
+  info "combining config files\n"
+
+  $DOTFILES_ROOT/script/concat-config
+}
+
 # Ensure submodules are updated
 git submodule update --init --recursive
 
@@ -115,6 +121,8 @@ do
     info "$install_script\n"
     source "$install_script"
 done
+
+concat_config
 
 echo ''
 echo '  All installed!'
