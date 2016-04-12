@@ -30,5 +30,4 @@
 	url = git://github.com/icefox/git-hooks.git
 [submodule "rust/rsvm.symlink"]
 	path = rust/rsvm.symlink
-	url = https://github.com/michaelmior/rsvm.git
-	branch = version-path
+	url = https://github.com/sdepold/rsvm.git
