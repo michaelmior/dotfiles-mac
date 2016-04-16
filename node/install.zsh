@@ -1,5 +1,5 @@
 source $HOME/.nvm/nvm.sh
-nvm install v5.6.0
+nvm install v5.10.1
 nvm alias default $(nvm current)
 
 npm set progress=false
