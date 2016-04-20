@@ -23,28 +23,10 @@ __fsel() {
 
 if [[ $- =~ i ]]; then
 
-if [ -n "$TMUX_PANE" -a ${FZF_TMUX:-1} -ne 0 -a ${LINES:-40} -gt 15 ]; then
-  fzf-file-widget() {
-    local height
-    height=${FZF_TMUX_HEIGHT:-40%}
-    if [[ $height =~ %$ ]]; then
-      height="-p ${height%\%}"
-    else
-      height="-l $height"
-    fi
-    if [[ $1 == "1" ]]; then
-      tmux split-window $height "zsh -c 'source ~/.fzf.zsh; tmux send-keys -t $TMUX_PANE \"vim \$(__fsel)
-\"'"
-    else
-      tmux split-window $height "zsh -c 'source ~/.fzf.zsh; tmux send-keys -t $TMUX_PANE \"\$(__fsel)\"'"
-    fi
-  }
-else
-  fzf-file-widget() {
-    LBUFFER="${LBUFFER}$(__fsel)"
-    zle redisplay
-  }
-fi
+fzf-file-widget() {
+LBUFFER="${LBUFFER}$(__fsel)"
+zle redisplay
+}
 zle     -N   fzf-file-widget
 bindkey '^P' fzf-file-widget
 
