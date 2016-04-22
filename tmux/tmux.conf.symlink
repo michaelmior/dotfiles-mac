@@ -43,7 +43,8 @@ bind k select-pane -U
 bind l select-pane -R
 
 # Automatically use mouse for scrolling
-setw -g mode-mouse on
+set -g mouse-utf8 on
+set -g mouse on
 
 # Allow scrolling with shift-pageup/down
 bind -n S-Pageup copy-mode -u
@@ -56,3 +57,6 @@ bind -n C-M-Pagedown next-window
 set -g base-index 1
 set -g pane-base-index 1
 set-option -g renumber-windows on
+
+# Don't wait for escape sequences
+set -sg escape-time 0
