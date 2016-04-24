@@ -1,4 +1,4 @@
-FROM ubuntu@14.04
+FROM ubuntu@16.04
 MAINTAINER Michael Mior <michael.mior@gmail.com>
 
 RUN locale-gen en_US.UTF-8
@@ -23,6 +23,7 @@ RUN apt-get update && \
       libxml2 \
       ncurses-dev \
       openssl \
+      sudo \
       tmux \
       vim-nox \
       zlib1g-dev \
