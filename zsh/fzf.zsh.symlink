@@ -1,34 +1,22 @@
-# Setup fzf function
-# ------------------
-unalias fzf 2> /dev/null
-fzf() {
-  ruby $HOME/.dotfiles/zsh/fzf.symlink/fzf "$@"
-}
-functions fzf > /dev/null
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */home/mmior/.dotfiles/zsh/fzf.symlink/bin* ]]; then
+  export PATH="$PATH:/home/mmior/.dotfiles/zsh/fzf.symlink/bin"
+fi
+
+# Man path
+# --------
+if [[ ! "$MANPATH" == */home/mmior/.dotfiles/zsh/fzf.symlink/man* && -d "/home/mmior/.dotfiles/zsh/fzf.symlink/man" ]]; then
+  export MANPATH="$MANPATH:/home/mmior/.dotfiles/zsh/fzf.symlink/man"
+fi
 
 # Auto-completion
 # ---------------
-[[ $- =~ i ]] && source $HOME/.dotfiles/zsh/fzf.symlink/fzf-completion.zsh
+[[ $- == *i* ]] && source "/home/mmior/.dotfiles/zsh/fzf.symlink/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-# CTRL-P - Paste the selected file path(s) into the command line
-__fsel() {
-  set -o nonomatch
-  command ag -l -g "" | fzf -m | while read item; do
-    printf '%q ' "$item"
-  done
-  echo
-}
-
-if [[ $- =~ i ]]; then
-
-fzf-file-widget() {
-LBUFFER="${LBUFFER}$(__fsel)"
-zle redisplay
-}
-zle     -N   fzf-file-widget
-bindkey '^P' fzf-file-widget
+source "/home/mmior/.dotfiles/zsh/fzf.symlink/shell/key-bindings.zsh"
 
 fzf-edit() {
   fzf-file-widget 1
@@ -39,14 +27,3 @@ fzf-edit() {
 }
 zle     -N   fzf-edit
 bindkey '^T' fzf-edit
-
-# ALT-C - cd into the selected directory
-fzf-cd-widget() {
-  cd "${$(set -o nonomatch; command find -L * -path '*/\.*' -prune \
-          -o -type d -print 2> /dev/null | fzf):-.}"
-  zle reset-prompt
-}
-zle     -N    fzf-cd-widget
-bindkey '\ec' fzf-cd-widget
-
-fi
