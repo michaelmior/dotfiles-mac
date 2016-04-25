@@ -4,5 +4,5 @@ nvm() {
     nvm "$@"
 }
 
-export PATH="$NVM_DIR/versions/node/v5.11.1/bin:$PATH"
+export PATH="$NVM_DIR/versions/node/v5.11.0/bin:$PATH"
 export MANPATH="$NVM_DIR/versions/node/v5.11.0/share/man:$MANPATH"
