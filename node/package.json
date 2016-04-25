@@ -28,6 +28,7 @@
     "nativescript": "*",
     "phonegap": "*",
     "purescript": "*",
+    "redux-cli": "*",
     "rnpm": "*",
     "typescript": "*",
     "uglify-js": "*",
