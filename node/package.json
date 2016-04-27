@@ -27,7 +27,6 @@
     "less": "*",
     "nativescript": "*",
     "phonegap": "*",
-    "purescript": "*",
     "redux-cli": "*",
     "rnpm": "*",
     "typescript": "*",
