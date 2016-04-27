@@ -23,6 +23,7 @@ RUN apt-get update && \
       libxml2 \
       ncurses-dev \
       openssl \
+      python \
       sudo \
       tmux \
       vim-nox \
