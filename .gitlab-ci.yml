@@ -1,0 +1,7 @@
+before_script:
+  - curl -sSL https://get.docker.com/ | sh
+  - docker info
+
+build_image:
+  script:
+    - docker build .
