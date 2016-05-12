@@ -7,3 +7,5 @@ if [ ! -d ~/.gvm ]; then
     gvm use go1.4.3
     gvm install go1.5.2 --prefer-binary
 fi
+
+go get github.com/ericchiang/pup
