@@ -9,7 +9,6 @@
     "bower": "*",
     "casperjs": "*",
     "coffee-script": "*",
-    "cordova": "*",
     "diff-so-fancy": "*",
     "ember-cli": "*",
     "eslint": "*",
@@ -20,22 +19,25 @@
     "eslint-plugin-react": "*",
     "eslint-plugin-standard": "*",
     "foundation-cli": "*",
-    "generator-keystone": "*",
-    "generator-wordpress": "*",
-    "gulp": "*",
     "grunt-cli": "*",
+    "gulp": "*",
     "harp": "*",
     "ionic": "*",
     "jshint": "*",
     "json-diff": "*",
     "karma-cli": "*",
     "less": "*",
-    "nativescript": "*",
-    "phonegap": "*",
     "redux-cli": "*",
     "rnpm": "*",
+    "snyk": "^1.14.2",
     "typescript": "*",
     "uglify-js": "*",
     "yo": "*"
-  }
+  },
+  "scripts": {
+    "test": "snyk test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
