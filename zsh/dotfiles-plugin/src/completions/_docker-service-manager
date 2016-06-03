@@ -1,0 +1,85 @@
+#compdef docker-service-manager
+
+# docker-service-manager autocompletion for oh-my-zsh
+# Requires: docker-service-manager installed
+# Author: Michael Mior (@michaelmior)
+# Thanks to Azaan (@aeonazaan) for his docker completion script
+
+
+# ----- Helper functions
+# Output a selectable list of all running docker services
+__docker_services() {
+    declare -a cont_cmd
+    cont_cmd=($(docker-service-manager list | grep Running | awk '{ print $2 }'))
+    if [[  'X$cont_cmd' != 'X' ]]
+        _describe 'services' cont_cmd
+}
+
+# Output a selectable list of all services, even not running
+__docker_all_services() {
+    declare -a cont_cmd
+    cont_cmd=($(find ${DOCKER_SERVICE_ROOT:-/etc/docker-services} -maxdepth 2 -name service.json | rev | cut -d/ -f2 | rev))
+    if [[  'X$cont_cmd' != 'X' ]]
+        _describe 'services' cont_cmd
+}
+
+# ----- Commands
+# Seperate function for each command, makes extension easier later
+# ---------------------------
+__list() {
+    # no arguments
+}
+
+__status() {
+    _arguments
+    __docker_all_services
+}
+
+__start() {
+    _arguments \
+        '(-d,--nodaemon)'{-d,--nodaemon}'[Do not start in daemon mode]'
+    __docker_all_services
+}
+
+__stop() {
+    _arguments
+    __docker_services
+}
+
+__restart() {
+    _arguments
+    __docker_services
+}
+
+# end commands ---------
+# ----------------------
+
+local -a _1st_arguments
+_1st_arguments=(
+    "list":"List all installed services"
+    "status":"Retrieve infos about a service"
+    "start":"Start a service"
+    "stop":"Stop a service"
+    "restart":"Restart a service"
+)
+
+_arguments '*:: :->command'
+
+if (( CURRENT == 1 )); then
+    _describe -t commands "docker-service-manager command" _1st_arguments
+    return
+fi
+
+local -a _command_args
+case "$words[1]" in
+    list)
+       __list ;;
+    status)
+        __status ;;
+    start)
+        __start ;;
+    stop)
+        __stop ;;
+    restart)
+        __restart ;;
+esac
