@@ -10,6 +10,7 @@
     "casperjs": "*",
     "coffee-script": "*",
     "diff-so-fancy": "*",
+    "docker-service-manager": "*",
     "ember-cli": "*",
     "eslint": "*",
     "eslint-config-standard": "*",

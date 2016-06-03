@@ -1,0 +1,10 @@
+{
+  "tag": "postgres",
+  "name": "postgres",
+  "ports": [
+    5432
+  ],
+  "mounts": {
+    "data": "/var/lib/postgresql/data"
+  }
+}

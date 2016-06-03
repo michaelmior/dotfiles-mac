@@ -1,0 +1,10 @@
+{
+  "tag": "redis",
+  "name": "redis",
+  "ports": [
+    6379
+  ],
+  "mounts": {
+    "data": "/var/redis"
+  }
+}

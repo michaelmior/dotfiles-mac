@@ -1,0 +1,13 @@
+{
+  "tag": "mysql",
+  "name": "mysql",
+  "ports": [
+    3306
+  ],
+  "env": {
+    "MYSQL_ALLOW_EMPTY_PASSWORD": 1
+  },
+  "mounts": {
+    "data": "/var/lib/mysql"
+  }
+}

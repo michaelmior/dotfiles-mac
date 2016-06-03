@@ -1,0 +1,10 @@
+{
+  "tag": "mongo",
+  "name": "mongo",
+  "ports": [
+    27017
+  ],
+  "mounts": {
+    "data": "/data/db"
+  }
+}

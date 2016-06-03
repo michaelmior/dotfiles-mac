@@ -1,0 +1,10 @@
+{
+  "tag": "cassandra",
+  "name": "cassandra",
+  "ports": [
+    9042
+  ],
+  "mounts": {
+    "data": "/var/lib/cassandra"
+  }
+}
