@@ -3,15 +3,9 @@ ignore:
     - ionic > request > hawk:
         reason: None given
         expires: '2016-06-11T00:21:44.145Z'
-      ionic > ionic-app-lib > node-sass > node-gyp > request > hawk:
-        reason: None given
-        expires: '2016-06-19T07:01:48.901Z'
     - ionic > ionic-app-lib > request > hawk:
         reason: None given
         expires: '2016-06-11T00:21:44.147Z'
-      ionic > ionic-app-lib > ionic-cordova-lib > npm > node-gyp > request > hawk:
-        reason: None given
-        expires: '2016-06-19T07:01:48.902Z'
     - ionic > ionic-app-lib > ionic-cordova-lib > request > hawk:
         reason: None given
         expires: '2016-06-11T00:21:44.147Z'
@@ -24,6 +18,12 @@ ignore:
     - ionic > npm > npm-registry-client > request > hawk:
         reason: None given
         expires: '2016-06-11T00:21:44.152Z'
+    - ionic > ionic-app-lib > node-sass > node-gyp > request > hawk:
+        reason: None given
+        expires: '2016-06-19T07:01:48.901Z'
+    - ionic > ionic-app-lib > ionic-cordova-lib > npm > node-gyp > request > hawk:
+        reason: None given
+        expires: '2016-06-19T07:01:48.902Z'
   'npm:node-uuid:20160328':
     - ionic > npm > request > node-uuid:
         reason: None given
@@ -109,10 +109,12 @@ patch:
   'npm:request:20160119':
     - ionic > request:
         patched: '2016-05-12T00:19:14.672Z'
-      ionic > ionic-app-lib > node-sass > node-gyp > request:
-        patched: '2016-05-20T07:00:16.116Z'
+      firebase-tools > googleapis > google-auth-library > request:
+        patched: '2016-06-03T22:11:31.756Z'
     - ionic > ionic-app-lib > request:
         patched: '2016-05-12T00:19:14.672Z'
+      firebase-tools > googleapis > request:
+        patched: '2016-06-03T22:11:31.756Z'
     - ionic > npm > node-gyp > request:
         patched: '2016-05-12T00:19:14.672Z'
     - ionic > npm > npm-registry-client > request:
@@ -129,6 +131,8 @@ patch:
         patched: '2016-05-12T00:19:14.672Z'
     - ionic > ionic-app-lib > ionic-cordova-lib > npm > request:
         patched: '2016-05-12T00:19:14.672Z'
+    - ionic > ionic-app-lib > node-sass > node-gyp > request:
+        patched: '2016-05-20T07:00:16.116Z'
   'npm:semver:20150403':
     - ionic > gulp > semver:
         patched: '2016-05-12T00:19:14.672Z'
@@ -193,4 +197,7 @@ patch:
         patched: '2016-05-12T00:19:14.672Z'
     - harp > terraform > harp-minify > uglify-js:
         patched: '2016-05-12T00:19:14.672Z'
+  'npm:hawk:20160119':
+    - ionic > ionic-app-lib > ionic-cordova-lib > npm > request > hawk:
+        patched: '2016-06-03T22:11:31.756Z'
 version: v1
