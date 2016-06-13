@@ -31,15 +31,8 @@
     "less": "*",
     "redux-cli": "*",
     "rnpm": "*",
-    "snyk": "^1.14.2",
     "typescript": "*",
     "uglify-js": "*",
     "yo": "*"
-  },
-  "scripts": {
-    "test": "snyk test",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
-  },
-  "snyk": true
+  }
 }
