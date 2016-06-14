@@ -2,7 +2,7 @@
 #
 
 [hub]
-    protocol = https
+    protocol = ssh
 [user]
     name = AUTHORNAME
     email = AUTHOREMAIL
@@ -35,3 +35,7 @@
     default = simple
 [pull]
     rebase = true
+[submodule]
+	fetchJobs = 0
+[diff]
+	compactionHeuristic = 1
