@@ -60,3 +60,5 @@ set-option -g renumber-windows on
 
 # Don't wait for escape sequences
 set -sg escape-time 0
+
+bind -n C-l send-keys -R \; send-keys C-l \; clear-history
