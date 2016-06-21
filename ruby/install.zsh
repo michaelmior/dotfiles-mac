@@ -4,3 +4,7 @@ if [ ! -x ~/.rvm/scripts/rvm ]; then
     rvm install --quiet-curl 2.3
     rvm --default use 2.3
 fi
+
+gem install -q \
+    rubocop \
+    travis
