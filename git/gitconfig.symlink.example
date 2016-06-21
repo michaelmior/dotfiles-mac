@@ -1,24 +1,21 @@
 # Sample gitconfig
 #
 
-[hub]
-    protocol = ssh
-[user]
-    name = AUTHORNAME
-    email = AUTHOREMAIL
-[credential]
-    helper = GIT_CREDENTIAL_HELPER
 [alias]
     amend = commit --amend -C HEAD
     inject = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
+[apply]
+    whitespace = nowarn
 [color]
     ui = auto
 [core]
-    excludesfile = ~/.gitignore
     editor = vim
+    excludesfile = ~/.gitignore
     pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
-[apply]
-    whitespace = nowarn
+[credential]
+    helper = GIT_CREDENTIAL_HELPER
+[diff]
+    compactionHeuristic = 1
 [merge]
     tool = vimdiff
 [mergetool]
@@ -27,15 +24,19 @@
     prompt = false
 [help]
     autocorrect = 1
+[hub]
+    protocol = ssh
+[pull]
+    rebase = true
 [push]
     # See `git help config` (search for push.default)
     # for more information on different options of the below setting.
     #
     # Setting to git 2.0 default to surpress warning message
     default = simple
-[pull]
-    rebase = true
+    recurseSubmodules = check
 [submodule]
-	fetchJobs = 0
-[diff]
-	compactionHeuristic = 1
+    fetchJobs = 0
+[user]
+    name = AUTHORNAME
+    email = AUTHOREMAIL
