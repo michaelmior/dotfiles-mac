@@ -8,5 +8,6 @@ if [ ! -d ~/.gvm ]; then
     gvm install go1.6.2 --prefer-binary
 fi
 
-go get github.com/aykamko/tag
 go get github.com/ericchiang/pup
+go get github.com/ichinaski/pxl
+go get github.com/aykamko/tag
