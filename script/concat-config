@@ -32,4 +32,7 @@ do
     echo >> $DOTFILES_ROOT/init.zsh
 done
 
+# Add dircolors
+dircolors $DOTFILES_ROOT/system/dircolors.jellybeans >> $DOTFILES_ROOT/init.zsh
+
 unset config_files
