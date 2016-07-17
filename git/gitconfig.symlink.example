@@ -3,6 +3,7 @@
 
 [alias]
     amend = commit --amend -C HEAD
+    find-wip = "!f() { git fsck --no-reflog | awk '/dangling commit/ {print $3}' | xargs -n 1 -I {} git show --format='tformat:%ct %cr %h %s' {} | grep WIP | sort -nr | cut -d ' ' -f 2- | less; }; f"
     inject = "!f() { set -e; HASH=`git show $1 --pretty=format:\"%H\" -q`; shift; git commit -m \"fixup! $HASH\" $*; [ -n \"$(git diff-files)\" ] && git stash && DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
 [apply]
     whitespace = nowarn
@@ -11,21 +12,21 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
-    pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+    pager = diff-so-fancy | less --tabs=1,5 -R
 [credential]
     helper = GIT_CREDENTIAL_HELPER
 [diff]
     compactionHeuristic = 1
-[merge]
-    tool = vimdiff
-[mergetool]
-    keepBackup = false
 [difftool]
     prompt = false
 [help]
     autocorrect = 1
 [hub]
     protocol = ssh
+[merge]
+    tool = vimdiff
+[mergetool]
+    keepBackup = false
 [pull]
     rebase = true
 [push]
