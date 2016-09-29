@@ -6,6 +6,10 @@ if [ ! -d ~/.rsvm/versions/$STABLE_VERSION ]; then
     rsvm use $STABLE_VERSION
 fi
 
-[[ -e ~/.cargo/bin/cargo-add ]] || cargo install --quiet cargo-edit
-[[ -e ~/.cargo/bin/rg ]] || cargo install --quiet ripgrep
-[[ -e ~/.cargo/bin/xsv ]] || cargo install --quiet xsv
+function rust_install {
+  [[ -e ~/.cargo/bin/$2 ]] || cargo install --quiet $1
+}
+
+rust_install cargo-edit cargo-add
+rust_install ripgrep rg
+rust_install xsv xsv
