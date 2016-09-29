@@ -7,4 +7,5 @@ if [ ! -d ~/.rsvm/versions/$STABLE_VERSION ]; then
 fi
 
 [[ -e ~/.cargo/bin/cargo-add ]] || cargo install --quiet cargo-edit
+[[ -e ~/.cargo/bin/rg ]] || cargo install --quiet ripgrep
 [[ -e ~/.cargo/bin/xsv ]] || cargo install --quiet xsv
