@@ -13,12 +13,17 @@ pip install --upgrade virtualenv
 pip install --upgrade pipsi
 pyenv rehash
 
-[[ -d ~/.local/venvs/cqlsh ]] || pipsi --bin-dir=$HOME/bin install cqlsh
-[[ -d ~/.local/venvs/csvkit ]] || pipsi --bin-dir=$HOME/bin install csvkit
-[[ -d ~/.local/venvs/httpie ]] || pipsi --bin-dir=$HOME/bin install httpie
-[[ -d ~/.local/venvs/pip-tools ]] || pipsi --bin-dir=$HOME/bin install pip-tools
-[[ -d ~/.local/venvs/pygments ]] || pipsi --bin-dir=$HOME/bin install Pygments
-[[ -d ~/.local/venvs/shyaml ]] || pipsi --bin-dir=$HOME/bin install shyaml
+function pipsi_install {
+  [[ -d ~/.local/venvs/$2 ]] || pipsi --bin-dir=$HOME/bin install $1
+}
+
+pipsi_install cqlsh cqlsh
+pipsi_install csvkit csvkit
+pipsi_install httpie httpie
+pipsi_install httpstat httpstat
+pipsi_install pip-tools pip-tools
+pipsi_install Pygments pygments
+pipsi_install shyaml shyaml
 
 unset PIP_CONFIG_FILE
 unset VIRTUALENV_QUIET
