@@ -42,6 +42,7 @@ USER tester
 
 ENV HOME /home/tester
 ENV TMUX y
+ENV TMUX_PLUGIN_MANAGER_PATH "/home/tester/.tmux/plugins/"
 ENV GIT_AUTHOR_NAME Michael Mior
 ENV GIT_AUTHOR_EMAIL michael.mior@gmail.com
 
