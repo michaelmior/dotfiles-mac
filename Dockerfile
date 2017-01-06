@@ -12,6 +12,7 @@ RUN apt-get update -qq && \
       curl \
       ed \
       git \
+      gnupg2 \
       libbz2-dev \
       libc6-dev \
       libncurses-dev \
