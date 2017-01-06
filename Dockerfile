@@ -10,6 +10,7 @@ RUN apt-get update -qq && \
       flex \
       cabal-install \
       curl \
+      dirmngr \
       ed \
       git \
       gnupg2 \
