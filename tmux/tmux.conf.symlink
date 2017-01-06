@@ -44,7 +44,6 @@ bind k select-pane -U
 bind l select-pane -R
 
 # Automatically use mouse for scrolling
-set -g mouse-utf8 on
 set -g mouse on
 
 # Allow scrolling with shift-pageup/down
