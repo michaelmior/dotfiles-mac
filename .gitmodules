@@ -32,6 +32,3 @@
 	path = rust/rsvm.symlink
 	url = https://github.com/michaelmior/rsvm.git
     branch = rustlang-https
-[submodule "rust/ripgrep"]
-	path = rust/ripgrep
-	url = https://github.com/BurntSushi/ripgrep.git
