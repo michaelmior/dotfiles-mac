@@ -1,10 +1,10 @@
-source rust/rsvm.zsh
-STABLE_VERSION=$(rsvm ls-channel stable)
-
-if [ ! -d ~/.rsvm/versions/$STABLE_VERSION ]; then
-    rsvm install $STABLE_VERSION
-    rsvm use $STABLE_VERSION
+if which rustup > /dev/null; then
+  rustup self update
+else
+  curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
 fi
+
+rustup update
 
 function rust_install {
   [[ -e ~/.cargo/bin/$2 ]] || cargo install --quiet $1

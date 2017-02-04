@@ -1,1 +1,1 @@
-export PATH="$HOME/.rsvm/current/dist/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
