@@ -4,10 +4,10 @@ else
   curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
 fi
 
-rustup update
+~/.cargo/bin/rustup update
 
 function rust_install {
-  [[ -e ~/.cargo/bin/$2 ]] || cargo install --quiet $1
+  [[ -e ~/.cargo/bin/$2 ]] || ~/.cargo/bin/cargo install --quiet $1
 }
 
 rust_install cargo-edit cargo-add
