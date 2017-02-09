@@ -8,6 +8,9 @@ if [ ! -d ~/.gvm ]; then
     gvm install go1.7.5 --prefer-binary
 fi
 
+source ~/.gvm/scripts/gvm
+gvm use go1.7.5
+
 go get -u github.com/ericchiang/pup
 go get -u github.com/ichinaski/pxl
 go get -u github.com/aykamko/tag
