@@ -3,4 +3,4 @@ if [[ ! -e $HOME/bin/composer ]]; then
   chmod +x $HOME/bin/composer
 fi
 
-composer self-update
+$HOME/bin/composer self-update
