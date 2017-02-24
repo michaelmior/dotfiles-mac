@@ -1,4 +1,4 @@
-.TH "tup" "1" "2014/03/12" "http://gittup.org/tup" "tup manual"
+.TH "tup" "1" "2017/01/12" "http://gittup.org/tup" "tup manual"
 .\" disable hyphenation/justification
 .nh
 .ad l
@@ -193,6 +193,21 @@ Do not scan the project for changed files. This is for internal tup testing only
 Causes tup to display the full command string instead of just the pretty-printed string for commands that use the ^ TEXT^ prefix.
 .RE
 .TP
+.B generate [--config config-file] script.sh (or script.bat on Windows)
+The generate command will parse all Tupfiles and create a shell script that can build the program without running in a tup environment. The expected usage is in continuous integration environments that aren't compatible with tup's dependency checking (eg: if FUSE is not supported). On Windows, if the script filename has a ".bat" extension, then the output will be a batch script instead of a shell script. For example:
+.nf
+
+git clone ... myproj
+cd myproj
+tup generate build.sh
+\&./build.sh
+# Copy out build artifacts / logs here
+git clean -f -x -d
+
+.fi
+The shell script does not work incrementally, so it is effectively a one-time use. You will need to clean up the tree before the next 'tup generate' and script invocation. This does not support variants, however the top-level tup.config file is used to define the configuration variables. Optionally, a separate configuration file can be passed in with the --config argument.
+.RE
+.TP
 .B varsed
 The varsed command is used as a subprogram in a Tupfile; you would not run it manually at the command-line. It is used to read one file, and replace any variable references and write the output to a second file. Variable references are of the form @VARIABLE@, and are replaced with the corresponding value of the @-variable. For example, if foo.txt contains:
 .nf
@@ -214,7 +229,7 @@ You shouldn't ever need to run this, unless you want to make the database reflec
 .B upd
 Legacy secondary command. Calling 'tup upd' is equivalent to simply calling 'tup'.
 .SH INI FILES
-Tup allows for a variety of configuration files. These files affect the behavoir of tup as a program, but not tup as a build system. That is to say, changing any of these options should not affect the end result of a successful build, but may affect how tup gets there (e.g. how many compile jobs to run in parallel).
+Tup allows for a variety of configuration files. These files affect the behavior of tup as a program, but not tup as a build system. That is to say, changing any of these options should not affect the end result of a successful build, but may affect how tup gets there (e.g. how many compile jobs to run in parallel).
 
 In addition to setting options, Tupfile.ini files have a special property. Tup uses Tupfile.ini to identify the root of a project to automatically set up a .tup directory in the project root the first time it is run. This file may be empty. At a minimum, the root directory of a project should contain a file named 'Tupfile.ini' so that users do not need to explicitly run 'tup init' when first setting up a new project.
 
@@ -266,7 +281,7 @@ Set to the maximum number of commands tup will run simultaneously. The default i
 Set to '1' to keep building as much as possible even if errors are encountered. Anything dependent on a failed command will not be executed, but other independent commands will be. The default is '0', which will cause tup to stop after the first failed command. See also the -k option.
 .TP
 .B updater.full_deps (defaults to '0')
-Set to '1' to track dependencies on files outside of the tup hierarchy. The default is '0', which only tracks dependencies within the tup hierarchy. For example, if you want all C files to be re-compiled when gcc is updated on your system, you should set this to '1'. In Linux and OSX, using full dependencies requires that the tup binary is suid as root so that it can run sub-processes in a chroot environment. Note that if this value is set to '1' from '0', tup will rebuild the entire project. Disabling this option when it was previously enabled does not require a full rebuild, but does take some time since the nodes representing external files are cleared out. NOTE: This does not currently work with ccache or other programs that may write to external files due to issues with locking. This may be fixed in the future.
+Set to '1' to track dependencies on files outside of the tup hierarchy. The default is '0', which only tracks dependencies within the tup hierarchy. For example, if you want all C files to be re-compiled when gcc is updated on your system, you should set this to '1'. In Linux and OSX, using full dependencies requires that the tup binary is suid as root so that it can run sub-processes in a chroot environment. Alternatively on Linux, if your kernel supports user namespaces, then you don't need to make the binary suid. Note that if this value is set to '1' from '0', tup will rebuild the entire project. Disabling this option when it was previously enabled does not require a full rebuild, but does take some time since the nodes representing external files are cleared out. NOTE: This does not currently work with ccache or other programs that may write to external files due to issues with locking. This may be fixed in the future.
 .TP
 .B updater.warnings (defaults to '1')
 Set to '0' to disable warnings about writing to hidden files. Tup doesn't track files that have a hidden path component (those that begin with a '.' character). If a sub-process writes to a hidden file, such as ".foo", then by default tup will display a warning that this file was created. By disabling this option, those warnings are not displayed. In either case, writing to hidden files is allowed and is not tracked by tup.
@@ -347,7 +362,7 @@ This will add the foo.h dependency to the gcc commands for foo.c and bar.c, so t
 .B command
 The command string that will be passed to the system(3) call by tup. This command is allowed to read from any file specified as an input or order-only input, as well as any other file in the tup hierarchy that is not the output of another command. In other words, a command cannot read from another command's output unless it is specified as an input. This restriction is what allows tup to be parallel safe. Additionally, the command must write to all of the output files specified by the "outputs" section, if any.
 .IP
-When executed, the command's file accesses are monitored by tup to ensure that they conform to these rules. Any files opened for reading that were generated from another command but not specfied as inputs are reported as errors. Similarly, any files opened for writing that are not specified as outputs are reported as errors. All files opened for reading are recorded as dependencies to the command. If any of these files change, tup will re-execute the command during the next update. Note that if an input listed in the Tupfile changes, it does not necessarily cause the command to re-execute, unless the command actually read from that input during the prior execution. Inputs listed in the Tupfile only enforce ordering among the commands, while file accesses during execution determine when commands are re-executed.
+When executed, the command's file accesses are monitored by tup to ensure that they conform to these rules. Any files opened for reading that were generated from another command but not specified as inputs are reported as errors. Similarly, any files opened for writing that are not specified as outputs are reported as errors. All files opened for reading are recorded as dependencies to the command. If any of these files change, tup will re-execute the command during the next update. Note that if an input listed in the Tupfile changes, it does not necessarily cause the command to re-execute, unless the command actually read from that input during the prior execution. Inputs listed in the Tupfile only enforce ordering among the commands, while file accesses during execution determine when commands are re-executed.
 .IP
 A command string can begin with the special sequence ^\ TEXT^, which will tell tup to only print "TEXT" instead of the whole command string when the command is being executed. This saves the effort of using echo to pretty-print a long command. The short-display behavior can be overridden by passing the --verbose flag to tup, which will cause tup to display the actual command string instead of "TEXT". The space after the first '^' is significant. Any characters immediately after the first '^' are treated as flags. See the ^-flags section below for details. For example, this command will print "CC foo.c" when executing system(gcc -c foo.c -o foo.o) :
 .nf
@@ -393,18 +408,21 @@ In this case one could use *.o as the input instead, but sometimes it is useful 
 .RE
 .TP
 .B ^-flags
-In a command string that uses the ^\ TEXT^ sequence, flag characters can be placed immediately after the ^ until the first space character or closing carat. For example:
+In a command string that uses the ^\ TEXT^ sequence, flag characters can be placed immediately after the ^ until the first space character or closing caret. For example:
 .nf
 
 : foo.c |> ^c CC %f^ gcc --coverage %f -o %o |> foo | foo.gcno
 : bar.c |> ^c^ gcc --coverage %f -o %o |> bar | bar.gcno
 
 .fi
-In the foo.c case, the command is run in a chroot and will display "CC foo.c". In the bar.c case, the command is run in a chroot and the "gcc --coverage bar.c -o bar" string is displayed. These are the supported flag characters:
+In the foo.c case, the command requires namespaces (or suid) and will display "CC foo.c". In the bar.c case, the command requires namespaces (or suid) and the "gcc --coverage bar.c -o bar" string is displayed. These are the supported flag characters:
 .RS
 .TP
+.B b
+The 'b' flag causes the command to be run via "/usr/bin/env bash -e -o pipefail -c <command>" instead of the default "/bin/sh -e -c <command>". In addition to allowing bash extensions in the :-rule, "-o pipefail" dictates that "the return value of a pipeline is the value of the last (rightmost) command to exit with a non-zero status, or zero if all commands in the pipeline exit successfully."
+.TP
 .B c
-The 'c' flag causes the command to run inside a chroot on Linux and OSX, so that the fake working directory that tup uses is not visible to the sub-process. This may be necessary for commands that read the current working directory and write that information in any output files. For example, gcc with the --coverage flag will use the current working directory as the location of where to put the .gcda file. Use the 'c' flag to always run this command in a chroot. This is only supported if the tup binary is suid root so that it can setup the chroot environment.
+The 'c' flag causes the command to fail if tup does not support user namespaces (on Linux) or is not suid root. In these cases, tup runs in a degraded mode where the fake working directories are visible in the sub-processes, and some dependencies may be missed. If these degraded behaviors will break your a particular command in your build, add the 'c' flag so that users know they need to add the suid bit or upgrade their kernel. This flag is ignored on Windows.
 .TP
 .B o
 The 'o' flag causes the command to compare the new outputs against the outputs from the previous run. Any outputs that are the same will not cause dependent commands in the DAG to be executed. For example, adding this flag to a compilation command will skip the linking step if the object file is the same from the last time it ran.
@@ -456,6 +474,23 @@ The string that a glob operator matched. For example with the files a_text.txt a
 
 .fi
 will output the filenames a_binary.bin and b_binary.bin. Only the first glob expanded will be substituted in for %g. %g is only valid when there is a single input file or foreach is used.
+.TP
+.B %<group>
+All of the files in "group". For example:
+.nf
+
+#./submodules/sm1/Tupfile
+: foo.c |> gcc -c %f -o %o |> %B.o ../<submodgroup>
+
+#./submodules/sm2/Tupfile
+: bar.c |> gcc -c %f -o %o |> %B.o ../<submodgroup>
+
+#./project/Tupfile
+: ../submodules/<submodgroup> |> echo '%f' > %o |> submodules_f.txt
+: ../submodules/<submodgroup> |> echo '%<submodgroup>' > %o |> submodules_group.txt
+
+.fi
+will produce "../submodules/<submodgroup>" in submodules_f.txt, but "../submodules/sm1/foo.o ../submodules/sm2/bar.o" in submodules_group.txt. If the input contains multiple groups with the same name but different directories, %<group> will be expanded to all of the files in each listed group.
 .RE
 .RE
 .TP
@@ -491,7 +526,7 @@ No other special $-variables exist yet, but to be on the safe side you should as
 Set the &-variable to refer to the given file or directory. The file must be a normal file, not a generated file (an output from a :-rule). &-variables are used to refer to files in a similar way as $(TUP_CWD), except that instead of storing the relative path to the file, &-variables store tup's internal ID of the file. This means that the relative path to the file is determined when the &-variable is used, rather than when the variable is assigned as is the case with $(TUP_CWD). &-variables can only be used in the following locations: :-rule inputs, :-rule order-only inputs, :-rule commands, include lines, and run-script lines.
 .TP
 .B ifeq (lval,rval)
-Evaluates the 'lval' and 'rval' parameters (ie: substitutes all $-variables and @-variables), and does a string comparison to see if they match. If so, all lines between the 'ifeq' and following 'endif' statement are processed; otherwise, they are ignored.
+Evaluates the 'lval' and 'rval' parameters (ie: substitutes all $-variables and @-variables), and does a string comparison to see if they match. If so, all lines between the 'ifeq' and following 'endif' statement are processed; otherwise, they are ignored. Note that no whitespace is pruned for the values - all text between the '(' and ',' comprise 'lval', and all text between the ',' and ')' comprise 'rval'. This means that ifeq (foo, foo) is false, while ifeq(foo,foo) is true. This is for compatibility with Makefile if statements.
 .TP
 .B ifneq (lval,rval)
 Same as 'ifeq', but with the logic inverted.
@@ -649,7 +684,7 @@ In this case, the @-variable "FOO" is explicitly set to "n".
 TUP_PLATFORM is a special @-variable. If CONFIG_TUP_PLATFORM is not set in the tup.config file, it has a default value according to the platform that tup itself was compiled in. Currently the default value is one of "linux", "solaris", "macosx", "win32", or "freebsd".
 .TP
 .B @(TUP_ARCH)
-TUP_ARCH is another special @-variable. If CONFIG_TUP_ARCH is not set in the tup.config file, it has a default value according to the processor architecture that tup itself was compiled in. Currently the default value is one of "i386", "x86_64", "powerpc", "powerpc64", "ia64", "alpha", "sparc" or "arm".
+TUP_ARCH is another special @-variable. If CONFIG_TUP_ARCH is not set in the tup.config file, it has a default value according to the processor architecture that tup itself was compiled in. Currently the default value is one of "i386", "x86_64", "powerpc", "powerpc64", "ia64", "alpha", "sparc", "arm64", or "arm".
 
 .SH "VARIANTS"
 Tup supports variants, which allow you to build your project multiple times with different configurations. Perhaps the most common case is to build a release and a debug configuration with different compiler flags, though any number of variants can be used to support whatever configurations you like. Each variant is built in its own directory distinct from each other and from the source tree. When building with variants, the in-tree build is disabled. To create a variant, make a new directory at the top of the tup hierarchy and create a "tup.config" file there. For example:
@@ -671,7 +706,7 @@ $ tup
 
 .fi
 
-This time all Tupfiles will be parsed with @(MYPROJ_DEBUG) set to "y", and all build products will be placed in the build-debug directory. Note that setting @(MYPROJ_DEBUG) only has any affect if the variable is actually used in a Tupfile (perhaps by adding debug flags to the compiler command-line).
+This time all Tupfiles will be parsed with @(MYPROJ_DEBUG) set to "y", and all build products will be placed in the build-debug directory. Note that setting @(MYPROJ_DEBUG) only has any effect if the variable is actually used in a Tupfile (perhaps by adding debug flags to the compiler command-line).
 
 Running "tup" will update all variants. For example, updating after modifying a C file that is used in all configurations will cause it to be re-compiled for each variant. As with any command that is executed, this is done in parallel subject to the constraints of the DAG and the number of jobs specified. To build a single variant (or subset of variants), specify the build directory as the target to "tup", just like with any partial update. For example:
 
@@ -690,6 +725,18 @@ $ rm -rf build-debug
 .fi
 
 If you build with variants, it is recommended that you always have a default variant that contains an empty tup.config file. This helps check that your software is always able to be built by simply checking it out and doing 'tup init; tup' without relying on a specific configuration.
+
+.fi
+
+When using in-tree builds, the resulting build outputs may rely on run-time files, placed in the source tree and not being processed by tup. Tup allows such files to be copied verbatim in the variant build directory by providing a built-in macro "!tup_preserve":
+
+.nf
+
+:foreach *.png |> !tup_preserve |>
+
+.fi
+
+Either a symbolic link or a copy of the source file will be created, depending on the OS and file system being used.
 
 .SH "EXAMPLE"
 Parsing a :-rule may be a little confusing at first. You may find it easy to think of the Tupfile as a shell script with additional input/output annotations for the commands. As an example, consider this Tupfile:
