@@ -34,3 +34,4 @@ function copy_from_contrib {
 
 copy_from_contrib git-resurrect.sh git-resurrect
 copy_from_contrib git-jump/git-jump git-jump
+copy_from_contrib subtree/git-subtree git-subtree
