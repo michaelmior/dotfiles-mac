@@ -25,6 +25,7 @@ RUN apt-get update -qq && \
       libxml2 \
       ncurses-dev \
       openssl \
+      php-cli \
       python \
       sudo \
       tmux \
