@@ -30,6 +30,7 @@ RUN apt-get update -qq && \
       sudo \
       tmux \
       vim-nox \
+      wget \
       zlib1g-dev \
       zsh \
     && apt-get clean
