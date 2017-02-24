@@ -3,4 +3,4 @@ if [[ ! -e ~/bin/lein ]]; then
   chmod +x $HOME/bin/lein
 fi
 
-yes | lein upgrade
+yes | $HOME/bin/lein upgrade
