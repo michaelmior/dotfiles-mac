@@ -14,6 +14,8 @@ RUN apt-get update -qq && \
       ed \
       git \
       gnupg2 \
+      jq \
+      latexmk \
       libbz2-dev \
       libc6-dev \
       libncurses-dev \
