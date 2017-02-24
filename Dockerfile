@@ -27,9 +27,11 @@ RUN apt-get update -qq && \
       libyaml-dev \
       libxml2 \
       ncurses-dev \
+      opam \
       openssl \
       php-cli \
       python \
+      racket \
       sudo \
       tmux \
       vim-nox \
