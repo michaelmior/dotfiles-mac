@@ -26,3 +26,11 @@ then
 
     success 'gitconfig'
 fi
+
+function copy_from_contrib {
+  cp /usr/share/doc/git/contrib/$1 $HOME/bin/$2
+  chmod +x $HOME/bin/$2
+}
+
+copy_from_contrib git-resurrect.sh git-resurrect
+copy_from_contrib git-jump/git-jump git-jump
