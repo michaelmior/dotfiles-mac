@@ -8,6 +8,7 @@
     "babel-eslint": "*",
     "bower": "*",
     "casperjs": "*",
+    "cloc": "*",
     "coffee-script": "*",
     "diff-so-fancy": "*",
     "docker-service-manager": "*",
