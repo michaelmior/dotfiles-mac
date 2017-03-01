@@ -7,6 +7,7 @@ RUN apt-get update -qq && \
       autoconf \
       build-essential \
       bison \
+      editorconfig \
       flex \
       cabal-install \
       curl \
