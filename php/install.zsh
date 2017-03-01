@@ -4,3 +4,9 @@ if [[ ! -e $HOME/bin/composer ]]; then
 fi
 
 $HOME/bin/composer self-update
+
+function composer_install {
+  $HOME/bin/composer global require $1
+}
+
+composer_install mkusher/padawan
