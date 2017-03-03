@@ -3,7 +3,7 @@ MAINTAINER Michael Mior <michael.mior@gmail.com>
 
 RUN locale-gen en_US.UTF-8
 RUN apt-get -qq update && \
-    apt-get -qq install \
+    apt-get install -qq -o=Dpkg::Use-Pty=0 \
       autoconf \
       build-essential \
       bison \
