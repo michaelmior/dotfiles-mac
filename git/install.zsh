@@ -1,6 +1,6 @@
 if ! [ -f git/gitconfig.symlink ]; then
     git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
         git_credential='osxkeychain'
     fi
 
