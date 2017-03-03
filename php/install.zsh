@@ -6,7 +6,7 @@ fi
 $HOME/bin/composer self-update
 
 function composer_install {
-  $HOME/bin/composer global require $1
+  $HOME/bin/composer -n -q global require $1
 }
 
 composer_install mkusher/padawan
