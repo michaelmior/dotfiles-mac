@@ -2,8 +2,8 @@ FROM ubuntu:16.10
 MAINTAINER Michael Mior <michael.mior@gmail.com>
 
 RUN locale-gen en_US.UTF-8
-RUN apt-get update -qq && \
-    apt-get install -qq \
+RUN apt-get -qq update && \
+    apt-get -qq install \
       autoconf \
       build-essential \
       bison \
