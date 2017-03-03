@@ -39,7 +39,7 @@ RUN apt-get -qq update && \
       wget \
       zlib1g-dev \
       zsh \
-    && apt-get clean
+    > /dev/null && apt-get clean
 
 RUN useradd -s /bin/zsh tester
 ADD . /home/tester/.dotfiles
