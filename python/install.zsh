@@ -2,7 +2,7 @@ source python/path.zsh
 eval "$(pyenv init -)"
 
 pyenv install -s 2.7.11
-pyenv install -s 3.5.1
+pyenv install -s 3.6.0
 pyenv global 2.7.11
 
 export PIP_CONFIG_FILE=~/.dotfiles/python/pip.conf
