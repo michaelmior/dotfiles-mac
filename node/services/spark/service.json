@@ -1,0 +1,11 @@
+{
+  "tag": "sequenceiq/spark:1.6.0",
+  "name": "spark",
+  "ports": [
+    4040,
+    8042,
+    8088
+  ],
+  "args": ["-d"]
+}
+
