@@ -109,7 +109,7 @@ concat_config () {
 }
 
 # Ensure submodules are updated
-git submodule update --init --recursive
+git submodule update --init --recursive --depth 1
 
 install_files 'dotfiles' "`find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`" "$HOME/.\$source"
 
