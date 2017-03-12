@@ -2,6 +2,7 @@ FROM ubuntu:16.10
 MAINTAINER Michael Mior <michael.mior@gmail.com>
 
 RUN locale-gen en_US.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qq update && \
     apt-get install -qq -o=Dpkg::Use-Pty=0 \
       autoconf \
