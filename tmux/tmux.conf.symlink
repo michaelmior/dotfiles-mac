@@ -30,6 +30,7 @@ set -g visual-activity on
 set -g set-titles on
 set -g set-titles-string '#T'
 set -g terminal-overrides "xterm*:XT:smcup@:rmcup@"
+set -ga terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
 
 # set scrollback history to 10000 (10k)
 set -g history-limit 10000
