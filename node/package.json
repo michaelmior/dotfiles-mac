@@ -30,6 +30,7 @@
     "json-diff": "*",
     "karma-cli": "*",
     "less": "*",
+    "rebase-editor": "*",
     "redux-cli": "*",
     "rnpm": "*",
     "typescript": "*",

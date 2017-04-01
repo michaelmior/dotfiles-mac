@@ -36,6 +36,8 @@
     # Setting to git 2.0 default to surpress warning message
     default = simple
     recurseSubmodules = check
+[sequence]
+    editor = rebase-editor
 [submodule]
     fetchJobs = 0
 [user]
