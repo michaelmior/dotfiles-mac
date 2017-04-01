@@ -10,5 +10,6 @@ nvm alias default $(nvm current)
 npm config delete prefix
 
 npm set progress=false
-(cd $HOME/.dotfiles/node && npm install --loglevel=warn)
+npm install -g yarn --loglevel=warn
+(cd $HOME/.dotfiles/node && yarn)
 npm set progress=true
