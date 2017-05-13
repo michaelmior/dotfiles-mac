@@ -3,4 +3,9 @@ if [[ ! -e ~/bin/lein ]]; then
   chmod +x $HOME/bin/lein
 fi
 
+if [[ ! -e ~/bin/boot ]]; then
+  wget -O $HOME/bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
+  chmod +x $HOME/bin/boot
+fi
+
 yes | $HOME/bin/lein upgrade
