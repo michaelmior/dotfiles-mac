@@ -1,6 +1,18 @@
 source python/path.zsh
 eval "$(pyenv init -)"
 
+function plugin_install {
+  if [[ ! -d ~/.pyenv/plugins/$2 ]]; then
+    git clone $1 ~/.pyenv/plugins/$2
+  fi
+}
+
+plugin_install git://github.com/pyenv/pyenv-update.git pyenv-update
+plugin_install git://github.com/pyenv/pyenv-doctor.git pyenv-doctor
+
+pyenv update
+pyenv doctor || return 1
+
 pyenv install -s 2.7.11
 pyenv install -s 3.6.0
 pyenv global 2.7.11
