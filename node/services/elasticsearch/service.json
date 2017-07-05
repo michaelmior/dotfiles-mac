@@ -1,0 +1,9 @@
+{
+  "tag": "elasticsearch:2.4.5",
+  "name": "elasticsearch",
+  "ports": [
+    9200,
+    9300
+  ]
+}
+
