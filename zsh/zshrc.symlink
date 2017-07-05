@@ -120,7 +120,7 @@ fi
 
 agl() { ag --group --color $* | less -R }
 
-# use .localrc for secret stuff
+# use .localrc for secret stuff you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
 then
