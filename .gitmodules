@@ -28,3 +28,6 @@
 [submodule "git/git-hooks"]
 	path = git/git-hooks
 	url = git://github.com/icefox/git-hooks.git
+[submodule "system/even-better-ls"]
+	path = system/even-better-ls
+	url = git@github.com:illinoisjackson/even-better-ls.git

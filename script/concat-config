@@ -32,7 +32,9 @@ do
     echo >> $DOTFILES_ROOT/init.zsh
 done
 
-# Add dircolors
-dircolors $DOTFILES_ROOT/system/dircolors.jellybeans >> $DOTFILES_ROOT/init.zsh
+# Add colors
+colors=$(python $DOTFILES_ROOT/system/even-better-ls/ls_colors_generator.py)
+
+echo "LS_COLORS='$colors'" >> $DOTFILES_ROOT/init.zsh
 
 unset config_files
