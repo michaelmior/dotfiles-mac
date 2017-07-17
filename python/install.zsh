@@ -7,8 +7,9 @@ function plugin_install {
   fi
 }
 
-plugin_install git://github.com/pyenv/pyenv-update.git pyenv-update
 plugin_install git://github.com/pyenv/pyenv-doctor.git pyenv-doctor
+plugin_install git://github.com/massongit/pyenv-pip-update.git pyenv-pip-update
+plugin_install git://github.com/pyenv/pyenv-update.git pyenv-update
 
 pyenv update
 pyenv doctor || return 1
@@ -23,6 +24,7 @@ export VIRTUALENV_QUIET=1
 pip install --upgrade pip
 pip install --upgrade virtualenv
 pip install --upgrade pipsi
+pyenv pip-update
 pyenv rehash
 
 function pipsi_install {
