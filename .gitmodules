@@ -33,4 +33,4 @@
 	url = https://github.com/illinoisjackson/even-better-ls.git
 [submodule "git/git-extra-commands"]
 	path = git/git-extra-commands
-	url = git@github.com:unixorn/git-extra-commands.git
+	url = https://github.com/unixorn/git-extra-commands.git
