@@ -31,3 +31,6 @@
 [submodule "system/even-better-ls"]
 	path = system/even-better-ls
 	url = https://github.com/illinoisjackson/even-better-ls.git
+[submodule "git/git-extra-commands"]
+	path = git/git-extra-commands
+	url = git@github.com:unixorn/git-extra-commands.git
