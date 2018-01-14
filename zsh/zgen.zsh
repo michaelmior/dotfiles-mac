@@ -4,7 +4,6 @@ source "$HOME/.dotfiles/zsh/zgen/zgen.zsh"
 zgen oh-my-zsh
 
 zgen oh-my-zsh plugins/bundler
-zgen oh-my-zsh plugins/debian
 zgen oh-my-zsh plugins/django
 zgen oh-my-zsh plugins/go
 zgen oh-my-zsh plugins/grunt
