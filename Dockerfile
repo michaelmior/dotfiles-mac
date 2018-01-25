@@ -1,7 +1,6 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.10
 MAINTAINER Michael Mior <michael.mior@gmail.com>
 
-RUN locale-gen en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qq update && \
     apt-get install -qq -o=Dpkg::Use-Pty=0 \
@@ -28,6 +27,7 @@ RUN apt-get -qq update && \
       libtool \
       libyaml-dev \
       libxml2 \
+      locales \
       ncurses-dev \
       opam \
       openssl \
@@ -41,6 +41,7 @@ RUN apt-get -qq update && \
       zlib1g-dev \
       zsh \
     > /dev/null && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN locale-gen en_US.UTF-8
 
 RUN useradd -s /bin/zsh tester
 ADD . /home/tester/.dotfiles
