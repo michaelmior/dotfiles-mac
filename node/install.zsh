@@ -1,5 +1,10 @@
 if [ ! -d ~/n ]; then
-    curl -L https://git.io/n-install | bash -s -- -y -n
+    which npm
+    if [ $? -eq 0 ]; then
+      npm install -g n
+    else
+      curl -L https://git.io/n-install | bash -s -- -y -n
+    fi
     source $HOME/.dotfiles/node/path.zsh
 fi
 
