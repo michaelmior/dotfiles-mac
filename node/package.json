@@ -34,6 +34,7 @@
     "rebase-editor": "*",
     "redux-cli": "*",
     "rnpm": "*",
+    "serverless": "*",
     "typescript": "*",
     "uglify-js": "*",
     "yo": "*"
