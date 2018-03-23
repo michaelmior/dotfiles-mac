@@ -20,7 +20,9 @@ brew install \
     wget \
     zsh \
     binutils \
-    diffutils
+    diffutils \
+    readline \
+    xz
 
 brew install --with-default-names \
     gnu-sed \
