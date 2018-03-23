@@ -29,6 +29,7 @@
     "json-diff": "*",
     "karma-cli": "*",
     "less": "*",
+    "less-plugin-clean-css": "*",
     "nuclide": "*",
     "rebase-editor": "*",
     "redux-cli": "*",
