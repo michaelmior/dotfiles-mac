@@ -14,7 +14,6 @@ brew install \
     openssl \
     php \
     python \
-    racket \
     tmux \
     vim \
     wget \
@@ -37,4 +36,5 @@ brew tap caskroom/cask
 
 brew cask install \
     java \
-    mactex
+    mactex \
+    racket
