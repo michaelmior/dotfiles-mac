@@ -36,5 +36,4 @@ brew tap caskroom/cask
 
 brew cask install \
     java \
-    mactex \
     racket
