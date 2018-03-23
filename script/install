@@ -34,7 +34,7 @@ link_files () {
 install_files () {
   info "installing $1"
 
-  overwrite_all=false
+  overwrite_all=true
   backup_all=false
   skip_all=false
 

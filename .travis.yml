@@ -1,7 +1,14 @@
-sudo: required
+os: osx
 
-services:
-  - docker
+env:
+  global:
+    - TMUX=y
+    - TMUX_PLUGIN_MANAGER_PATH="/Users/travis/.tmux/plugins/"
+    - GIT_AUTHOR_NAME="Michael Mior"
+    - GIT_AUTHOR_EMAIL=michael.mior@gmail.com
 
+install: ./macos-setup.sh
 script:
-  - docker build .
+  - sed -i 's/overwrite_all=false/overwrite_all=true/g' script/install
+  - sed -i 's/readlink/greadlink/g' script/install
+  - ./script/install

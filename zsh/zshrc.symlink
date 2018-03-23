@@ -127,3 +127,10 @@ if [[ -a ~/.localrc ]]
 then
     source ~/.localrc
 fi
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/mmior/.dotfiles/node/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/mmior/.dotfiles/node/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/mmior/.dotfiles/node/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/mmior/.dotfiles/node/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
