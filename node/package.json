@@ -30,6 +30,7 @@
     "karma-cli": "*",
     "less": "*",
     "less-plugin-clean-css": "*",
+    "nativescript": "*",
     "nuclide": "*",
     "rebase-editor": "*",
     "redux-cli": "*",
