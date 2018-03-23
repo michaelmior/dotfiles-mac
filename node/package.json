@@ -31,6 +31,7 @@
     "less": "*",
     "less-plugin-clean-css": "*",
     "nativescript": "*",
+    "npx": "*",
     "nuclide": "*",
     "rebase-editor": "*",
     "redux-cli": "*",
