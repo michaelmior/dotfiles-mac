@@ -20,4 +20,5 @@ install: ./macos-setup.sh
 script:
   - sed -i 's/overwrite_all=false/overwrite_all=true/g' script/install
   - sed -i 's/readlink/greadlink/g' script/install
+  - sed -i 's/rustup update/rustup toolchain default/' rust/install.zsh
   - ./script/install
