@@ -3,6 +3,11 @@
 # bootstrap installs things.
 
 DOTFILES_ROOT="`pwd`"
+if type brew &> /dev/null; then
+    type xcrun &> /dev/null && \
+        export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include -I$(brew --prefix openssl)/include"
+    export LDFLAGS="-L$(brew --prefix openssl)/lib"
+fi
 
 set -e
 
